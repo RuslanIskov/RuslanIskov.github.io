@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Тестова сторінка</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="container">
+        <header id="header">
+			<nav class="navbar navbar-inverse">
+			  <div class="container-fluid">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+				  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+					<span class="sr-only">Меню</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				  </button>
+				  <a class="navbar-brand" href=".">NVDA course</a>
+				</div>
+
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse" id="main-menu">
+				  <ul class="nav navbar-nav">
+								<li class="active"><a href="./">Тестова сторінка</a></li>
+								<li><a href="./pages/druga-storinka.html">Друга сторінка</a></li>
+				  </ul>
+				</div><!-- /.navbar-collapse -->
+			  </div><!-- /.container-fluid -->
+			</nav>
+        </header><!-- /#banner -->
+	</div>
+	
+
+	
+	<div class="container">
+		<div class="col-sm-3">
+		</div>
+		<div class="col-sm-9">
+    <h1>Тестова сторінка</h1>
+    
+
+    <p>Тут має бути якийсь дуже важливий і головне цікавий контент</p>
+<h2>Дуже важливі речі</h2>
+<ul>
+<li>елемент списку
+  і зразу ж у ньому спробуємо код:  </li>
+<li>ще елемент списку<ul>
+<li>вкладений список</li>
+<li>і ще</li>
+<li>ну вже досить думаю</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3>А чи не намалювати таблицю?</h3>
+<table>
+<thead>
+<tr>
+<th>ПІБ</th>
+<th>IQ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Гаврик</td>
+<td>0,1</td>
+</tr>
+<tr>
+<td>Тугрик</td>
+<td>0,2</td>
+</tr>
+</tbody>
+</table>
+<h4>...і трішечки коду</h4>
+<div class="highlight"><pre><span></span>    <span class="k">class</span> <span class="n">RPlugins</span>(<span class="n">object</span>):
+        <span class="n">def</span> <span class="n">__init__</span>( <span class="k">self</span>, <span class="n">plugins_dir</span> = <span class="n">PLUGINS_DIR</span> ):  
+            <span class="k">self</span>.<span class="n">_plugins_names</span> = []
+            <span class="k">for</span> <span class="n">fileName</span> <span class="n">in</span> <span class="n">os</span>.<span class="n">listdir</span>( <span class="n">plugins_dir</span> ):
+                <span class="n">fName</span>, <span class="n">fExt</span> = <span class="n">os</span>.<span class="n">path</span>.<span class="n">splitext</span>( <span class="n">fileName</span> )
+                <span class="k">if</span> <span class="n">fExt</span> == <span class="s">&#39;.py&#39;</span>:
+                    <span class="k">if</span> <span class="n">fName</span> <span class="nb">not</span> <span class="n">in</span> <span class="n">IGNORED_PLUGIN_FILENAMES:</span>
+                        <span class="k">package</span> = <span class="n">__import__</span>(<span class="n">PLUGINS_DIR</span> + <span class="s">&#39;.&#39;</span> + <span class="n">fName</span>)
+                        <span class="k">self</span>.<span class="n">_plugins_names</span>.<span class="n">append</span>( <span class="n">fName</span> )
+            <span class="k">self</span>.<span class="n">_plugins_list</span> = []
+            <span class="k">self</span>.<span class="n">_plugins_dict</span> = {}
+            <span class="k">for</span> <span class="n">plgName</span> <span class="n">in</span> <span class="k">self</span>.<span class="n">_plugins_names:</span>
+                <span class="k">module</span> = <span class="n">getattr</span>( <span class="k">package</span>, <span class="n">plgName</span> )
+                <span class="k">for</span> <span class="nb">attr</span> <span class="n">in</span> <span class="n">dir</span>( <span class="k">module</span> ):
+                    <span class="n">obj</span> = <span class="n">getattr</span>( <span class="k">module</span>, <span class="nb">attr</span> )
+                    <span class="k">if</span> <span class="n">inspect</span>.<span class="n">isclass</span>( <span class="n">obj</span> ):
+                        <span class="k">if</span> <span class="n">issubclass</span>( <span class="n">obj</span>, <span class="n">clsBasePlugin</span> ):
+                            <span class="n">cls</span> = <span class="n">obj</span>( <span class="n">plgName</span> )
+                            <span class="k">if</span> <span class="n">cls</span>.<span class="n">__class__</span>.<span class="n">__name__</span> <span class="nb">not</span> <span class="n">in</span> <span class="n">IGNORED_CLASSES:</span>
+                                <span class="k">self</span>.<span class="n">_plugins_list</span>.<span class="n">append</span>( <span class="n">cls</span> )
+                                <span class="k">self</span>.<span class="n">_plugins_dict</span>[ <span class="n">plgName</span> ] = <span class="n">cls</span>
+            <span class="c c-Singleline"># self._plugins_names = list( self._plugins_dict.keys() )</span>
+</pre></div>
+
+
+<hr>
+
+		</div>
+	</div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>
